@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="sub-menu-page bg-light py-3">
+    <div class="container">
+        <h3>{{sub_menu_data.sub_menu_name}}</h3>
+        <p>{{sub_menu_data.long_content | safe}}</p>
+    </div>
+</div>
+{% endblock %}

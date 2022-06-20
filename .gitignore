@@ -2,6 +2,12 @@
 __pycache__/
 *.py[cod]
 *$py.class
+__pycache__/
+nasa/__pycache__
+nasaapp/__pycache__
+db.sqlite3
+passenger_wsgi.py
+nasaapp/migrations/__pycache__
 
 # C extensions
 *.so

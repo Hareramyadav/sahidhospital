@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<section>
+    <div class="px-4 py-12 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-16">
+        <div class="grid gap-6 row-gap-5 lg:grid-cols-3">
+            {% for destination in destinations %}
+            <div>
+                {% if destination.image %}
+                <img class="object-cover w-full h-64 mb-6 rounded shadow-lg lg:h-64 xl:h-64" src="{{destination.image}}"
+                    alt="" />
+                {% else %}
+                <img class="object-cover w-full h-64 mb-6 rounded shadow-lg lg:h-64 xl:h-64"
+                    src="{% static 'images/place.jpeg' %}" alt="" />
+                {% endif %}
+                <h5 class="text-center mb-2 text-xl font-bold leading-none sm:text-2xl">
+                    {{destination.title}}
+                </h5>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endblock %}

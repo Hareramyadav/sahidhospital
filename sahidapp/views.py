@@ -80,10 +80,10 @@ def index(request):
     menu = Menu.objects.all()
     popup = Popup.objects.all()
     about = AboutSection.objects.all().order_by('created_at')[:1]
-    news = News.objects.all().order_by('-created_at')[:3]
+    news = News.objects.all().order_by('-created_at')
     news_identity = [identity for identity in news if identity.news_position == 'news_identity'][:1]
     newss = [n for n in news if n.news_position == 'news'][:8]
-    teams = Message.objects.all().order_by('created_at')[:1]
+    teams = Message.objects.all().order_by('created_at')[:8]
     blogs = Blog.objects.all().order_by('-created_at')[:3]
     gallery = Gallery.objects.all().order_by('created_at')
     image = [i for i in gallery if i.media_type == 'image']
@@ -898,9 +898,37 @@ def delete_contact(request, contact_id):
     Contact.objects.filter(id=int(contact_id)).delete()
     return redirect('/contact_forms')
 
-    
+def create_counter(request):
+    if request.method == 'POST':
+        value = request.POST.get('value')
+        name = request.POST.get('name')
+        image = request.FILES.get('image')
 
+        data = dict(value=value, name=name, image=image)
+        Counter.objects.create(**data)
+        return redirect('/create_counter')
+    counter = Counter.objects.all().order_by('created_at')
+    return render(request, 'admin/create_counter.html', {'counter':counter})
 
+def edit_counter(request, counter_id):
+    counter = Counter.objects.get(id=int(counter_id))
+    if request.method == 'POST':
+        value = request.POST.get('value')
+        name = request.POST.get('name')
+        image = request.FILES.get('image', None)
+        
+        counter.value = value
+        counter.name = name
+        if image is not None:
+            counter.image = image
+
+        counter.save() 
+        return redirect('/create_counter')
+    return render(request, 'admin/edit_counter.html',{'counter':counter, 'counter_id':counter_id})
+
+def delete_counter(request, counter_id):
+    Counter.objects.filter(id=int(counter_id)).delete()
+    return redirect('/create_counter')
 
 
 # client pages.....................

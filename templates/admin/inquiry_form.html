@@ -1,0 +1,33 @@
+{% extends 'admin/admin_dashboard.html' %}
+{% load static %}
+{% block content %}
+<div class="container">
+    <h3>Admission Form Details</h3>
+    <div class="admission-form-display">
+        {% for form in inquiry_form %}
+        <div class="card">
+            <div class="card-body d-flex justify-content-between">
+                <div>
+                    <h6>Name: {{form.full_name}}</h6>
+                    <h6>Email: {{form.email}}</h6>
+                    <h6>Date of Birth: {{form.date_of_birth}}</h6>
+                    <h6>Gender: {{form.gender }}</h6>
+                    <h6>Mobile No.: {{form.mobile_no}}</h6>
+                    <h6>Current Address: {{form.current_address}}</h6>
+                    <h6>Program: {{form.stream}}</h6>
+                </div>
+                <div>
+                    <h6>Parent Name: {{form.parent_name}}</h6>
+                    <h6>Parent Contact No.: {{form.parent_email}}</h6>
+                    <h6>Parent Email: {{form.parent_no}}</h6>
+                    <h6>GPA: {{form.full_name}}</h6>
+                    <h6>School/College Name: {{form.school_name}}</h6>
+                    <h6>School/College Address: {{form.school_address}}</h6>
+                    <a href="{% url 'delete_form' form_id=form.id %}" class="delete-form text-decoration-none text-danger">Delete</a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

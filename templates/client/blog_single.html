@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="single-blog bg-light">
+    <div class="container py-3">
+        <h3>{{blog.blog_title}}</h3>
+        <p>{{blog.created_at}}</p>
+        <div class="card-image">
+            {% if b.blog_image %}
+            <img src="/{{ blog.blog_image.url }}" alt="" srcset="" maxHeight="400" width="100%">
+            {% else %}
+            <img src="{% static 'images/place.jpeg' %}" class="object-cover w-full h-64" alt="" />
+            {% endif %}
+        </div>
+        <div class="card-text mt-md-5 mt-3">
+            <p>{{blog.long_desc | safe}}</p>
+        </div>
+    </div>
+</div>
+{% endblock %}

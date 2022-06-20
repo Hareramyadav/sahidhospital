@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<div class="container d-flex flex-column justify-content-center align-items-center">
+    <h1 class="fs-2 my-5">Page Not Found</h1>
+    <div>
+        <a href="/" aria-label=""
+            class="btn btn-primary fs-4 inline-flex items-center font-semibold transition-colors duration-200 text-white-400 hover:text-white-800 text-capitalize">
+            go to home
+            <svg class="inline-block w-3 ml-2" fill="currentColor" viewBox="0 0 12 12">
+                <path
+                    d="M9.707,5.293l-5-5A1,1,0,0,0,3.293,1.707L7.586,6,3.293,10.293a1,1,0,1,0,1.414,1.414l5-5A1,1,0,0,0,9.707,5.293Z">
+                </path>
+            </svg>
+        </a>
+    </div>
+</div>
+
+{% endblock %}

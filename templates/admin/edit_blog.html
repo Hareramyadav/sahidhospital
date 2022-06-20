@@ -1,0 +1,42 @@
+{% extends 'admin/admin_dashboard.html' %}
+{% load static %}
+{% block content %}
+<div class="container">
+    <h3>Edit Blog</h3>
+    <div class="banner-form">
+        <form method="POST" action="{% url 'edit_blog' blog_id=blog_id %}" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{form.media}}
+            <div class="form-group mb-3">
+                <label for="blog_image">Image</label>
+                <input type="file" name="blog_image" class="form-control" id="" placeholder="">
+            </div>
+            <div class="form-group mb-3">
+                <label for="blog_title">Title</label>
+                <input type="text" name="blog_title" class="form-control" id="" placeholder="" value="{{blog.blog_title}}">
+            </div>
+            <div class="form-group mb-3">
+                <label for="blog_author">Author</label>
+                <input type="text" name="blog_author" class="form-control" id="" placeholder="" value="{{blog.blog_author}}">
+            </div>
+            <div class="form-group mb-3">
+                <label for="short_desc">Short Description</label>
+                <textarea rows="3" name="short_desc" class="form-control" id="edit_short_desc" placeholder="">{{blog.short_desc}}</textarea>
+            </div>
+            <div class="form-group mb-3">
+                <label for="long_desc">Long Description</label>
+                <textarea rows="5" name="long_desc" class="form-control" id="edit_long_desc" placeholder="">{{blog.long_desc}}</textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Update</button>
+        </form>
+    </div>
+</div>
+
+<script type="text/javascript">
+    CKEDITOR.replace('edit_short_desc');
+    CKEDITOR.replace('edit_long_desc');
+    var editor = CKEDITOR.instances['edit_short_desc', 'edit_long_desc'];
+    editor.getData();
+</script>
+
+{% endblock %}

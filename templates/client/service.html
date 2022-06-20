@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="single-blog bg-light">
+    <div class="container py-3">
+        <h3>{{service.title}}</h3>
+        <div class="card-image">
+            {% if service.image %}
+            <img src="{{ service.image.url }}" alt="" srcset="" maxHeight="400" width="100%">
+            {% endif %}
+        </div>
+        <div class="card-text mt-md-5 mt-3">
+            <p>{{service.long_desc | safe}}</p>
+        </div>
+    </div>
+</div>
+{% endblock %}

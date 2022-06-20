@@ -1,0 +1,50 @@
+{% extends 'admin/admin_dashboard.html' %}
+{% load static %}
+{% block content %}
+<div class="container">
+    <div class="banner-form">
+        <h3>Create Banner</h3>
+        <form method="POST" action="{% url 'create_banner' %}" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="form-group mb-3">
+                <label for="banner_image">Image</label>
+                <input type="file" name="banner_image" class="form-control" id="" placeholder="">
+            </div>
+            <div class="form-group mb-3">
+                <label for="banner_text">Sayings</label>
+                <input type="text" name="banner_text" class="form-control" id="" placeholder="">
+            </div>
+            <div class="form-group mb-3">
+                <label for="banner_link">Link</label>
+                <input type="text" name="banner_link" class="form-control" id="" placeholder="">
+            </div>
+            <div class="form-group mb-3">
+                <label for="button_text">Link Text</label>
+                <input type="text" name="button_text" class="form-control" id="" placeholder="">
+            </div>
+            <button type="submit" class="btn btn-primary">Create</button>
+        </form>
+    </div>
+    <div class="banner-contents mt-5">
+        <table class="table table-responsive">
+            <thead>
+                <tr>
+                    <th scope="col">Text</th>
+                    <th scope="col">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for b in banner %}
+                <tr>
+                    <td>{{b.banner_text}}</td>
+                    <td>
+                        <a href="{% url 'edit_banner' banner_id=b.id %}"><i class="fas fa-edit text-info"></i></a>
+                        <a href="{% url 'delete_banner' banner_id=b.id %}" class="delete_banner text-danger"><i class="fas fa-trash"></i></a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}

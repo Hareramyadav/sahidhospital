@@ -1,0 +1,48 @@
+{% extends 'admin/admin_dashboard.html' %}
+{% load static %}
+{% block content %}
+<div class="container">
+    <h3>Create Gallery</h3>
+    <div class="banner-form">
+        <form method="POST" action="{% url 'create_gallery' %}" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="form-group mb-3">
+                <label for="media">Image</label>
+                <input type="file" name="media" class="form-control" id="" placeholder="">
+            </div>
+            <div class="form-group mb-3">
+                <label for="video_url">Video Link</label>
+                <input type="text" name="video_url" class="form-control" id="" placeholder="">
+            </div>
+            <div class="form-group mb-3">
+                <label for="media_type">Media Type</label>
+                <select class="form-select" name="media_type" id="">
+                    <option value="image" selected>Image</option>
+                    <option value="video">Video</option>
+                </select>
+            </div>
+            <button type="submit" class="btn btn-primary">Create</button>
+        </form>
+    </div>
+    <div class="banner-contents mt-5">
+        <table class="table table-responsive">
+            <thead class="bg-light">
+                <tr>
+                    <th scope="col">Title</th>
+                    <th scope="col">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for g in gallery %}
+                <tr>
+                    <td>{{g.media_type}}</td>
+                    <td>
+                        <a href="{% url 'delete_gallery' gallery_id=g.id %}" class="delete_media text-danger"><i class="fas fa-trash"></i></a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}

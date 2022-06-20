@@ -1,0 +1,30 @@
+{% extends 'admin/admin_dashboard.html' %}
+{% load static %}
+{% block content %}
+<div class="container">
+    <h3>Edit Banner</h3>
+    <div class="banner-form">
+        <form method="POST" action="{% url 'edit_banner' banner_id=banner_id %}" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="form-group mb-3">
+                <!-- <img src="{{banner.banner_image.url}}" alt="" srcset="" height="100" width="100"> -->
+                <label for="banner_image">Image</label>
+                <input type="file" name="banner_image" class="form-control" id="" placeholder="">
+            </div>
+            <div class="form-group mb-3">
+                <label for="banner_text">Sayings</label>
+                <input type="text" name="banner_text" class="form-control" id="" placeholder="" value="{{banner.banner_text}}">
+            </div>
+            <div class="form-group mb-3">
+                <label for="banner_link">Link</label>
+                <input type="text" name="banner_link" class="form-control" id="" placeholder="" value="{{banner.banner_link}}">
+            </div>
+            <div class="form-group mb-3">
+                <label for="button_text">Link Text</label>
+                <input type="text" name="button_text" class="form-control" id="" placeholder="" value="{{banner.button_text}}">
+            </div>
+            <button type="submit" class="btn btn-primary">Update</button>
+        </form>
+    </div>
+</div>
+{% endblock %}

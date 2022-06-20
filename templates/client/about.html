@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="aboutus-page">
+    <hr>
+    <h3 class="container">About Us</h3>
+    <div class="about-contents container d-md-flex justify-content-between">
+        <div class="contents col-lg-8 me-md-4">
+            {% for a in about %}
+            <p style="text-align:justify;">{{a.long_desc | safe}}</p>
+            {% endfor %}
+        </div>
+        <div class="sidebar col-lg-4">
+            <h3 class="text-center">News/Notices</h3>
+            {% for n in news %}
+            <div class="card px-2 py-2 flex-xl-row mb-4">
+                <div class="card-text mb-3 mb-lg-0">
+                    <h5>{{n.title}}</h5>
+                    <p>{{n.created_at}}</p>
+                    <a href="{% url 'news' news_id=n.id %}">View Details</a>
+                </div>
+                <div class="card-image">
+                    {% if n.news_image %}
+                    <img src="{{n.news_image.url}}" alt="" srcset="" height="150" width="200">
+                    {% else %}
+                    <img src="{% static 'images/place.jpeg' %}" alt="" srcset="" height="150" width="200">
+                    {% endif %}
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock %}

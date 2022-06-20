@@ -1,0 +1,26 @@
+{% extends 'admin/admin_dashboard.html' %}
+{% load static %}
+{% block content %}
+<div class="container">
+    <h3>Create Statistics</h3>
+    <div class="banner-form">
+        <form method="POST" action="{% url 'edit_counter' counter_id=counter_id %}" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="form-group mb-3">
+                <label for="name">Title</label>
+                <input type="text" name="name" class="form-control" id="" placeholder="" value="{{counter.name}}">
+            </div>
+            <div class="form-group mb-3">
+                <label for="value">Value</label>
+                <input type="text" name="value" class="form-control" id="" placeholder="" value="{{counter.value}}">
+            </div>
+            <div class="form-group mb-3">
+                <label for="image">Image</label>
+                <input type="file" name="image" class="form-control" id="" placeholder="">
+            </div>
+            <button type="submit" class="btn btn-primary">Update</button>
+        </form>
+    </div>
+</div>
+
+{% endblock %}

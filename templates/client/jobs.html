@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="blogs-page d-md-flex flex-column jobs">
+    <div>
+        
+    </div>
+    <div class="container my-6 d-lg-flex">
+        <div class="lg:max-w-lg col-lg-5 px-3">
+            
+        </div>
+        <div class="mt-3 mt-lg-0 col-lg-7 px-3">
+            {% for job in job_list %}
+            <ul class="list-group">
+                <li class="list-group-item mb-3 fs-4 text-capitalize"><a href="#">{{job.title}}</a></li>
+            </ul>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock %}

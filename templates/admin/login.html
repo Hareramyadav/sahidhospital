@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<div class="container">
+    {% if messages %}
+    {% for message in messages %}
+    <h4 class="text-danger text-capitalize">{{ message }}</h4>
+    {% endfor %}
+    {% endif %}
+    <div class="login-form">
+        <form method="POST" action="{% url 'admin_login' %}" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="form-group mb-3">
+                <label for="email">Email</label>
+                <input type="email" name="email" class="form-control" id="" placeholder="">
+            </div>
+            <div class="form-group mb-3">
+                <label for="password">Password</label>
+                <input type="password" name="password" class="form-control" id="" placeholder="">
+            </div>
+            <button type="submit" class="btn button">Login</button>
+        </form>
+    </div>
+</div>
+{% endblock %}

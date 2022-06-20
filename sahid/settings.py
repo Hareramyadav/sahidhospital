@@ -131,8 +131,8 @@ MEDIA_URL = '/media/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static')
 ]
-STATIC_ROOT = '/home/radijmdg/fortune.radiatnserversite.com/static'
-MEDIA_ROOT = '/home/radijmdg/fortune.radiatnserversite.com/media'
+# STATIC_ROOT = '/home/radijmdg/fortune.radiatnserversite.com/static'
+# MEDIA_ROOT = '/home/radijmdg/fortune.radiatnserversite.com/media'
 
 
 USERNAME = 'sahid'

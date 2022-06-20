@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+
+<section class="sahid-services">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <h2 class="section-title text-center">Our Services</h2>
+            </div>
+        </div>
+        <div class="row">
+            {% for service in services %}
+            <div class="col-lg-3 col-md-6 col-sm-12">
+                <a href="#">
+                    <div class="box">
+                        <a href="{% url 'services' service_id=service.id %}">
+                            <figure>
+                                <img src="{{service.image }}" alt="" />
+                            </figure>
+                            <h3 class="text-capitalize">{{service.title}}</h3>
+                        </a>
+                    </div>
+                </a>
+            </div>
+            {% endfor %}
+            <div class="col-lg-12 col-md-12 mt-5 text-center">
+                <a class="btn btn_link" href="/services">Know More</a>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

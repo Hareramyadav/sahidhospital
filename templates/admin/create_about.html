@@ -1,0 +1,73 @@
+{% extends 'admin/admin_dashboard.html' %}
+{% load static %}
+{% block content %}
+<div class="container"> 
+    <h3>Create About Us Section</h3>
+    <div class="about-form">
+        <form method="POST" action="{% url 'create_about' %}" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{form.media}}
+            <div class="form-group mb-3">
+                <label for="title">Title</label>
+                <input type="text" name="title" class="form-control" id="" placeholder="">
+            </div>
+            <div class="form-group mb-3">
+                <label for="tagline">Tagline</label>
+                <input type="text" name="tagline" class="form-control" id="" placeholder="">
+            </div>
+            <div class="form-group mb-3">
+                <label for="about_image">Main Image</label>
+                <input type="file" name="about_image" class="form-control" id="" placeholder="">
+            </div>
+            <div class="form-group mb-3">
+                <label for="image_two">Second Image</label>
+                <input type="file" name="image_two" class="form-control" id="" placeholder="">
+            </div>
+            <div class="form-group mb-3">
+                <label for="image_three">Third Image</label>
+                <input type="file" name="image_three" class="form-control" id="" placeholder="">
+            </div>
+            <div class="form-group mb-3">
+                <label for="short_desc">Short Description</label>
+                <textarea rows="3" name="short_desc" class="form-control" id="short_desc" placeholder=""></textarea>
+            </div>
+            <div class="form-group mb-3">
+                <label for="long_desc">Long Description</label>
+                <textarea rows="5" name="long_desc" class="form-control" id="long_desc" placeholder=""></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Create</button>
+        </form>
+    </div>
+    <div class="about-content mt-5">
+        <table class="table table-responsive">
+            <thead>
+                <tr>
+                    <th scope="col">Name</th>
+                    <th scope="col">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for a in about %}
+                <tr>
+                    <td>{{a.title}}</td>
+                    <td>
+                        <a href="{% url 'edit_about' about_id=a.id %}" class="text-info"><i
+                                class="fas fa-edit"></i></a>
+                        <a href="{% url 'delete_about' about_id=a.id %}" class="delete_about text-danger"><i
+                                class="fas fa-trash"></i></a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<script type="text/javascript">
+    CKEDITOR.replace('short_desc');
+    CKEDITOR.replace('long_desc');
+    var editor = CKEDITOR.instances['short_desc', 'long_desc'];
+    editor.setData();
+</script>
+
+{% endblock %}

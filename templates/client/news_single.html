@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="single-news bg-light">
+    <div class="container py-3">
+        <h3 class="mt-3 main-news-heading">{{news.title}}</h3>
+        <h6 class="mt-2">{{news.created_at}}</h6>
+        {% if news.news_image %}
+        <img src="{{news.news_image.url}}" alt="" srcset="" maxHeight="500" width="100%">
+        {% endif %}
+        <p class="mt-md-5 mt-3">{{news.long_desc | safe}}</p>
+    </div>
+</div>
+{% endblock %}

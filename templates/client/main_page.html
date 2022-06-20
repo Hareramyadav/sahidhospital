@@ -1,0 +1,198 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<!-- Page Header -->
+<section>
+    <div class="relative bg-gray-600 bg-no-repeat bg-center bg-cover bg-blend-overlay" {% if data.image %}
+        style="background-image: url(/{{data.image.url}});" {% else %} style="background-color: black;" {% endif %}>
+        <div class="absolute inset-0">
+            <div class="absolute inset-0 bg-black-900" aria-hidden="true"></div>
+        </div>
+        <div class="relative max-w-7xl mx-auto py-28 px-4 sm:py-28 sm:px-6 lg:px-8">
+            <h1 class="text-3xl font-extrabold tracking-tight text-white sm:text-3xl lg:text-4xl text-uppercase">
+                {{data.menu_name}}
+            </h1>
+        </div>
+    </div>
+</section>
+
+{% if data.menu_name == 'contact' %}
+<!-- ====== Contact Section Start -->
+<section class="bg-white py-20 lg:py-[30px] overflow-hidden relative">
+    <div class="px-4 py-4 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-8">
+        <div class="flex flex-wrap lg:justify-between -mx-4">
+            <div class="w-full lg:w-1/2 xl:w-6/12 px-4">
+                <div class="max-w-[570px] mb-12 lg:mb-0">
+                    <h2
+                        class="text-dark mb-6 uppercase font-bold text-[32px] sm:text-[40px] lg:text-[36px] xl:text-[40px]">
+                        GET IN TOUCH WITH US
+                    </h2>
+                    <p class="text-base text-body-color leading-relaxed mb-9">
+                        {{data.short_content | safe}}
+                    </p>
+                    {% for footer in footer %}
+                    <div class="flex mb-8 max-w-[370px] w-full">
+                        <div
+                            class="max-w-[60px] sm:max-w-[70px] w-full h-[60px] sm:h-[70px] flex items-center justify-center mr-6 overflow-hidden bg-opacity-5 text-light bg-primary rounded">
+                            <i class="fas fa-map-marker fs-2"></i>
+                        </div>
+                        <div class="w-full">
+                            <h4 class="font-bold text-dark text-xl mb-1">Our Location</h4>
+                            <p class="text-base text-body-color">{{footer.address}}</p>
+                        </div>
+                    </div>
+                    <div class="flex mb-8 max-w-[370px] w-full">
+                        <div
+                            class="max-w-[60px] sm:max-w-[70px] w-full h-[60px] sm:h-[70px] flex items-center justify-center mr-6 overflow-hidden bg-primary bg-opacity-5 text-light rounded">
+                            <i class="fas fa-phone fs-2"></i>
+                        </div>
+                        <div class="w-full">
+                            <h4 class="font-bold text-dark text-xl mb-1">Phone Number</h4>
+                            <p class="text-base text-body-color">{{footer.phone_number}}</p>
+                        </div>
+                    </div>
+                    <div class="flex mb-8 max-w-[370px] w-full">
+                        <div
+                            class="max-w-[60px] sm:max-w-[70px] w-full h-[60px] sm:h-[70px] flex items-center justify-center mr-6 overflow-hidden bg-primary bg-opacity-5 text-light rounded">
+                            <i class="fa fa-envelope fs-2"></i>
+                        </div>
+                        <div class="w-full">
+                            <h4 class="font-bold text-dark text-xl mb-1">
+                                Email Address
+                            </h4>
+                            <p class="text-base text-body-color">
+                                {{footer.email}}
+                            </p>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="w-full lg:w-1/2 xl:w-5/12 px-4">
+                <div class="bg-white relative rounded-lg p-8 sm:p-12 shadow-lg">
+                    <form method="POST" action="{% url 'contact_form' %}" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <div class="mb-6">
+                            <input type="text" placeholder="Your Name" name="name" required
+                                class="w-full rounded py-3 px-[14px] text-body-color text-base border border-[f0f0f0] outline-none focus-visible:shadow-none focus:border-primary" />
+                        </div>
+                        <div class="mb-6">
+                            <input type="email" placeholder="Your Email" name="email"
+                                class="w-full rounded py-3 px-[14px] text-body-color text-base border border-[f0f0f0] outline-none focus-visible:shadow-none focus:border-primary" />
+                        </div>
+                        <div class="mb-6">
+                            <input type="text" placeholder="Your Phone" name="phone" required
+                                class="w-full rounded py-3 px-[14px] text-body-color text-base border border-[f0f0f0] outline-none focus-visible:shadow-none focus:border-primary" />
+                        </div>
+                        <div class="mb-6">
+                            <textarea rows="6" placeholder="Your Message" name="message" required
+                                class="w-full rounded py-3 px-[14px] text-body-color text-base border border-[f0f0f0] resize-none outline-none focus-visible:shadow-none focus:border-primary"></textarea>
+                        </div>
+                        <div>
+                            <button type="submit"
+                                class="w-full text-white bg-blue-600 rounded border border-primary p-3 transition hover:bg-opacity-90">
+                                Send Message
+                            </button>
+                        </div>
+                    </form>
+                    <div>
+                        <span class="absolute -top-10 -right-9 z-[-1]">
+                            <svg width="100" height="100" viewBox="0 0 100 100" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd" clip-rule="evenodd"
+                                    d="M0 100C0 44.7715 0 0 0 0C55.2285 0 100 44.7715 100 100C100 100 100 100 0 100Z"
+                                    fill="#3056D3" />
+                            </svg>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- ====== Contact Section End -->
+<div class="w-full h-96">
+    <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3531.4667363154454!2d85.33924361472678!3d27.733746582781034!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39eb1997bb7aa729%3A0xde3df4f6a9881eb2!2sShalmani%20Overseas%20Pvt.%20Ltd.!5e0!3m2!1sen!2snp!4v1643106069807!5m2!1sen!2snp"
+        width="100%" height="400" style="border: 0" allowfullscreen="" loading="lazy"></iframe>
+</div>
+{% elif data.menu_name == 'gallery' %}
+<div class="container-fluid bg-white my-3">
+    <div class="buttons d-flex justify-content-between align-items-center mb-md-3 mb-3">
+        <div class="image-button m-auto">
+            <a class="w-full text-white bg-blue-600 rounded border border-primary p-3 transition hover:bg-opacity-90"
+                type="button" id="image_button">Images</a>
+        </div>
+        <div class="video-button m-auto">
+            <a class="w-full text-white bg-blue-600 rounded border border-primary p-3 transition hover:bg-opacity-90"
+                type="button" id="video_button">Videos</a>
+        </div>
+    </div>
+    <div class="images" id="images">
+        <h3 class="mb-3">Images Gallery</h3>
+        <div class="image-container">
+            {% for i in image %}
+            <div class="image-box mb-3 mb-md-0">
+                {% if i.media %}
+                <img src="{{i.media.url}}" alt="" srcset="" width="100%" height="200">
+                {% endif %}
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+    <div class="videos" id="videos">
+        <h3 class="mb-3">Videos Gallery</h3>
+        <div class="video-container">
+            {% for v in video %}
+            <div class="image-box mb-3 mb-md-0">
+                <iframe width="100%" height="265" src="{{v.video_url}}" allowfullscreen></iframe>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% elif data.menu_name == 'job openings' %}
+<!-- ====== Services Section Start -->
+<section class="px-4 py-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-20">
+    <div class="container">
+        <div class="flex flex-wrap -mx-4">
+            {% for job in jobs %}
+            <div class="w-full md:w-1/2 lg:w-1/3 px-4">
+                <div class="p-10 md:px-7 xl:px-10 rounded-[20px] bg-white shadow-md hover:shadow-lg mb-8 ">
+                    <h4 class="font-semibold text-xl text-dark mb-3">
+                        {{job.title}}
+                    </h4>
+                    <h6 class="mb-3">{{job.company_name}}</h6>
+                    <strong
+                        class="inline-block px-3 py-1 text-xs font-semibold text-blue-600 bg-blue-100 rounded-sm mb-3">
+                        Country
+                    </strong>
+                    <h5 class="font-semibold mb-3">{{job.country}}</h6>
+                        <p class="text-body-color">
+                            {{job.short_desc | safe}}
+                        </p>
+                        <a href="{% url 'jobs' job_id=job.id %}"
+                            class="inline-flex items-center px-5 py-3 mt-8 font-medium text-blue-600 bg-gray-100 rounded-lg hover:opacity-75">
+                            See Details
+                            <svg xmlns="http://www.w3.org/2000/svg" class="flex-shrink-0 w-4 h-4 ml-3" fill="none"
+                                viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                            </svg>
+                        </a>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% else %}
+<section class="bg-white py-20 lg:py-[30px] overflow-hidden relative">
+    <div class="px-4 py-4 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-8">
+        {{data.long_content | safe}}
+    </div>
+</section>
+{% endif %}
+{% endblock %}

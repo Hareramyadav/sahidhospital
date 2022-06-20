@@ -1,0 +1,33 @@
+{% extends 'admin/admin_dashboard.html' %}
+{% load static %}
+{% block content %}
+<div class="container">
+    <h3>Update Site Identity</h3>
+    <div class="siteIdentity-form">
+        <form method="POST" action="{% url 'edit_identity' site_id=site_id %}" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="form-group mb-3">
+                <label for="site_name">Site Title</label>
+                <input type="text" name="site_name" class="form-control" id="" placeholder="" value="{{site_identity.site_name}}">
+            </div>
+            <div class="form-group mb-3">
+                <label for="tagline">Tagline</label>
+                <input type="text" name="tagline" class="form-control" id="" placeholder="" value="{{site_identity.tagline}}">
+            </div>
+            <div class="form-group mb-3">
+                <label for="logo_first">First Logo</label>
+                <input type="file" name="logo_first" class="form-control" id="" placeholder="" required>
+            </div>
+            <div class="form-group mb-3">
+                <label for="logo_second">Second Logo</label>
+                <input type="file" name="logo_second" class="form-control" id="" placeholder="">
+            </div>
+            <div class="form-group mb-3">
+                <label for="favicon">Favicon</label>
+                <input type="file" name="favicon" class="form-control" id="" placeholder="">
+            </div>
+            <button type="submit" class="btn btn-primary">Update</button>
+        </form>
+    </div>
+</div>
+{% endblock %}

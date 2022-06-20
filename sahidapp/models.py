@@ -1,3 +1,4 @@
+from email.mime import image
 from statistics import mode
 from django.db import models
 from django.core.exceptions import ValidationError
@@ -50,7 +51,7 @@ class SubMenu(models.Model):
 
     def __str__(self):
         return str(self.sub_menu_name)
-
+ 
 
 class Banner(models.Model):
     banner_image = models.ImageField(
@@ -296,6 +297,7 @@ class AdmissionForm(models.Model):
 class Counter(models.Model):
     value = models.CharField(max_length=100, blank=True, null=True)
     name = models.CharField(max_length=300, blank=True, null=True)
+    image = models.ImageField(blank=True, null=True, upload_to="static/images")
     created_at = models.DateTimeField(auto_now_add=True)
 
     class Meta:

@@ -1,0 +1,289 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<!-- banner section....... -->
+<div class="banner-slider">
+    {% for slider in banner %}
+    <div class="slider-one">
+        <div class="slider-one-image" style="background-image: url({{slider.banner_image}});">
+            <div class="overlay"></div>
+            <div class="slider-text">
+                <p>{{slider.banner_text}}</p>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+<!-- services section.............. -->
+<section class="sahid-services">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <h2 class="section-title text-center">Our Services</h2>
+            </div>
+        </div>
+        <div class="row">
+            {% for service in services %}
+            <div class="col-lg-3 col-md-6 col-sm-12">
+                <a href="#">
+                    <div class="box">
+                        <a href="{% url 'services' service_id=service.id %}">
+                            <figure>
+                                <img src="{{service.image }}" alt="" />
+                            </figure>
+                            <h3 class="text-capitalize">{{service.title}}</h3>
+                        </a>
+                    </div>
+                </a>
+            </div>
+            {% endfor %}
+            <div class="col-lg-12 col-md-12 mt-5 text-center">
+                <a class="btn btn_link" href="/services">Know More</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- about section.......... -->
+<section class="sahid-about">
+    <div class="container">
+        {% for about in about %}
+        <div class="row">
+            <div class="col-lg-5 col-md-6 col-sm-12">
+                <div class="img-background-wrapper">
+                    <div class="img_background" style="background-image: url({{about.about_image}})">
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-7 col-md-6  col-sm-12">
+                <h2>{{about.title}}</h2>
+                <p>
+                    {{about.short_desc | safe}}
+                </p>
+                <a href="/about" class="btn btn_link--transparent">Learn More</a>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</section>
+
+
+<!-- Doctors section.......... -->
+<section class="sahid-team">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 col-md-12  col-sm-12">
+
+                <h2 class="section-title text-center">Our Specilists</h2>
+
+            </div>
+        </div>
+        <div class="row">
+            {% for team in teams %}
+            <div class="col-xl-3 col-md-6 col-sm-12">
+                <div class="box">
+                    <figure>
+                        <a href=""><img src="{{team.image}}" alt="" width="800" height="800"></a>
+                    </figure>
+                    <h4><a href="#">{{team.name}}</a></h4>
+                    <span>{{team.position}}</span>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+
+<!-- counter section............... -->
+<section class="counter">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 col-md-12  col-sm-12">
+
+                <h2 class="section-title text-center">Our Statistics</h2>
+
+            </div>
+        </div>
+        <div class="row">
+            {% for count in counts %}
+            <div class="col-lg-3 col-md-3 col-sm-12">
+                <div class="box" style="background:#043760 ">
+                    <figure>
+                        <img src="{{count.image}}" alt="" />
+                    </figure>
+                    <div class="numWrapper"><span class="countNum">{{count.value}}</span>+</div>
+                    <h3 class="text-uppercase">{{count.name}}</h3>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+
+<!-- news section.............. -->
+<section class="latest_news">
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 col-sm-12">
+                <h2 class="section-title text-center">Latest News</h2>
+            </div>
+        </div>
+    </div>
+    <div class="row no-gutters" style="padding: 0px 20px">
+        <div class="owl-carousel owl-theme news">
+            {% for news in news %}
+            <div class="item">
+                <div class="outer-box">
+                    <a href="{% url 'news' news_id=news.id %}">
+                        <div class="box" style="background-image: url({{news.news_image}})">
+                            <div class="box-overlay">
+                                <h3 class="text-capitalize">{{news.heading}}</h3>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<!-- testimonial section.............. -->
+<section class="sahid_testimonial"
+    style="background: url(../static/images/testimonial-bg.png) no-repeat bottom;background-size:cover;background-position: top">
+    <div class="thin_layer" style="background: #0d233e;opacity:0.8"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-md-6 col-sm-12">
+                <div class="owl-carousel owl-theme testimonial_slider">
+                    {% for testimonial in testimonials %}
+                    <div class="item">
+                        <div class="testimonial_inner">
+                            <p>{{testimonial.short_message | safe}}</p>
+                            <div class="testimonial_author">
+                                <div class="author_image">
+                                    <img src="{{testimonial.student_image}}" alt="author image">
+                                </div>
+                                <h5>{{testimonial.student_name}}</h5>
+                            </div>
+                            <i class="fas fa-quote-left"></i>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 col-sm-12">
+                <h3 class="section-title">Our Testimonials </h3>
+                <p>Having a look on what our patient are saying</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- contact section............. -->
+<section class="sahid_contact_detail">
+
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 col-md-6 col-sm-12">
+                <h2>Are You Interest To Contact With Us?</h2>
+                <p>Making a nation prosperous is possible only through its healthy citizens.</p>
+                {% for footer in footer %}
+                <div class="add-contact">
+                    <span class="call-us wow fadeInUp" data-wow-delay="0.1s"
+                        style="visibility: visible; animation-delay: 0.1s; animation-name: fadeInUp;"><i
+                            class="fas fa-map-marker-alt"></i>
+                        <div class="contact_info_detail">
+                            <h4>Our Location</h4>
+                            <span><a href="#">{{footer.address}}</a></span>
+                        </div>
+                    </span>
+                    <span class="call-us wow fadeInUp" data-wow-delay="0.3s"
+                        style="visibility: visible; animation-delay: 0.3s; animation-name: fadeInUp;"><i
+                            class="fas fa-phone-volume"></i>
+                        <div class="contact_info_detail">
+                            <h4>Our Phone</h4>
+                            <span><a href="#">{{footer.phone_number}}</a></span>
+                        </div>
+                    </span>
+                    <span class="call-us wow fadeInUp" data-wow-delay="0.5s"
+                        style="visibility: visible; animation-delay: 0.5s; animation-name: fadeInUp;"><i
+                            class="fas fa-envelope"></i>
+                        <div class="contact_info_detail">
+                            <h4>Email</h4>
+                            <span><a href="#">{{footer.email}}</a></span>
+                        </div>
+                    </span>
+
+                </div>
+                {% endfor %}
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-12 ">
+                <div class="contact_form">
+                    <div role="form" class="wpcf7" id="wpcf7-f59-o1" lang="en-US" dir="ltr">
+                        <div class="screen-reader-response"></div>
+                        <h3 class="section-title text-center">Make An Appointment</h3>
+                        <form action="" method="post" class="wpcf7-form" novalidate="novalidate">
+                            <div style="display: none;">
+                                <input type="hidden" name="_wpcf7" value="59">
+                                <input type="hidden" name="_wpcf7_version" value="5.1.1">
+                                <input type="hidden" name="_wpcf7_locale" value="en_US">
+                                <input type="hidden" name="_wpcf7_unit_tag" value="wpcf7-f59-o1">
+                                <input type="hidden" name="_wpcf7_container_post" value="0">
+                                <input type="hidden" name="g-recaptcha-response" value="">
+                            </div>
+                            <p><label>
+                                    <span class="wpcf7-form-control-wrap your-name">
+                                        <input type="text" class="wpcf7-form-control wpcf7-text"
+                                            placeholder="Your Name">
+                                    </span>
+                                </label>
+                            </p>
+                            <p><label>
+                                    <span class="wpcf7-form-control-wrap your-email">
+                                        <input type="email" name="your-email" class="wpcf7-form-control wpcf7-text"
+                                            placeholder="Your Email (required)">
+                                    </span>
+                                </label>
+                            </p>
+                            <p><label>
+                                    <span class="wpcf7-form-control-wrap your-subject">
+                                        <input type="text" name="your-subject" value=""
+                                            class="wpcf7-form-control wpcf7-text" placeholder="Subject">
+                                    </span>
+                                </label>
+                            </p>
+                            <p><label>
+                                    <span class="wpcf7-form-control-wrap your-message">
+                                        <textarea name="your-message" class="wpcf7-form-control wpcf7-textarea"
+                                            placeholder="Message"></textarea>
+                                    </span>
+                                </label></p>
+                            <p><input type="submit" value="Apponment" class="wpcf7-form-control wpcf7-submit"><span
+                                    class="ajax-loader"></span></p>
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<div class="hot-line">
+    <div class="icon"><i class="fas fa-phone-volume"></i></div>
+    <div class="content">
+        <h3>Hotline: 1147</h3>
+        <p>For emergency medical service, ambulance care with paramedics</p>
+    </div>
+</div>
+
+{% endblock %}

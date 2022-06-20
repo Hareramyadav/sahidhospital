@@ -73,6 +73,9 @@ urlpatterns = [
     path('create_team', views.create_team, name='create_team'),
     path('edit_team/<int:team_id>', views.edit_team, name='edit_team'),
     path('delete_team/<int:team_id>', views.delete_team, name='delete_team'),
+    path('create_counter', views.create_counter, name='create_counter'),
+    path('edit_counter/<int:counter_id>', views.edit_counter, name='edit_counter'),
+    path('delete_counter/<int:counter_id>', views.delete_counter, name='delete_counter'),
 
     # client pages
     path('fortune/<int:page_id>', views.pages, name="pages"),

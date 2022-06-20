@@ -1,0 +1,77 @@
+{% extends 'admin/admin_dashboard.html' %}
+{% load static %}
+{% block content %}
+<div class="container">
+    <h3>Create Site Identity</h3>
+    {% if messages %}
+    {% for message in messages %}
+    <h3 class="text-center text-danger mb-4">{{ message }}</h3>
+    {% endfor %}
+    {% endif %}
+    <div class="siteIdentity-form">
+        <form method="POST" action="{% url 'site_identity' %}" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="form-group mb-3">
+                <label for="site_name">Site Title</label>
+                <input type="text" name="site_name" class="form-control" id="" placeholder="">
+            </div>
+            <div class="form-group mb-3">
+                <label for="tagline">Tagline</label>
+                <input type="text" name="tagline" class="form-control" id="" placeholder="">
+            </div>
+            <div class="form-group mb-3">
+                <label for="logo_first">First Logo</label>
+                <input type="file" name="logo_first" class="form-control" id="" placeholder="" required>
+            </div>
+            <div class="form-group mb-3">
+                <label for="logo_second">Second Logo</label>
+                <input type="file" name="logo_second" class="form-control" id="" placeholder="">
+            </div>
+            <div class="form-group mb-3">
+                <label for="favicon">Favicon</label>
+                <input type="file" name="favicon" class="form-control" id="" placeholder="">
+            </div>
+            <button type="submit" class="btn btn-primary">Create</button>
+        </form>
+    </div>
+    <div class="siteIdentity-content d-flex mt-5 col">
+        {% for s in site_identity %}
+        <div class="site-name">
+            <h3>{{s.site_name}}</h3>
+            <h6>{{s.tagline}}</h6>
+        </div>
+        <div class="logos d-flex col justify-content-center">
+            <div class="first-logo me-3">
+                <h5 class="mb-3">First Logo</h5>
+                {% if s.logo_first %}
+                <img src="{{s.logo_first.url}}" alt="" srcset="" height="150" width="150">
+                {% else %}
+                <h6>There is no First Logo</h3>
+                    {% endif %}
+            </div>
+            <div class="first-logo me-3">
+                <h5 class="mb-3">Second Logo</h5>
+                {% if s.logo_second %}
+                <img src="{{s.logo_second.url}}" alt="" srcset="" height="150" width="150">
+                {% else %}
+                <h6>There is no Second Logo</h3>
+                    {% endif %}
+            </div>
+            <div class="first-logo me-3">
+                <h5 class="mb-3">Favicon</h5>
+                {% if s.favicon %}
+                <img src="{{s.favicon.url}}" alt="" srcset="" height="100" width="100">
+                {% else %}
+                <h6>There is no Favicon</h3>
+                    {% endif %}
+            </div>
+        </div>
+        {% if s.site_name %}
+        <a href="{% url 'edit_identity' site_id=s.id %}"><i class="fas fa-edit fs-4"></i></a>
+        {% else %}
+        <h6></h6>
+        {% endif %}
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

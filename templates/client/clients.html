@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<section class="px-4 py-24 mx-auto max-w-7xl">
+    <h1 class="mb-3 text-3xl font-bold leading-tight text-center text-gray-900 md:text-4xl">
+        Our Clients
+    </h1>
+    <h2 class="mb-12 text-sm tracking-wide text-center text-gray-800 uppercase">
+        We're proud to have played a part in these amazing journeys.
+    </h2>
+    <div class="grid grid-cols-2 gap-2 text-center lg:grid-cols-6">
+        {% for client in clients %}
+        <div class="flex items-center justify-center p-6 bg-opacity-25 bg-primary-light">
+            {% if client.image %}
+            <img src="{{client.image}}" alt="Todoist Logo" class="block object-contain h-16" />
+            {% else %}
+            <img src="{% static 'images/place.jpeg' %}" alt="Todoist Logo" class="block object-contain h-16 rounded" />
+            {% endif %}
+        </div>
+        {% endfor %}
+    </div>
+</section>
+{% endblock %}

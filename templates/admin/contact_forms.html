@@ -1,0 +1,22 @@
+{% extends 'admin/admin_dashboard.html' %}
+{% load static %}
+{% block content %}
+<div class="container">
+    <h3>Contact Form Details</h3>
+    <div class="admission-form-display">
+        {% for form in forms %}
+        <div class="card">
+            <div class="card-body">
+                <div>
+                    <h6>Name: {{form.name}}</h6>
+                    <h6>Email: {{form.email}}</h6>
+                    <h6>Mobile No.: {{form.phone}}</h6>
+                    <h6>Message: {{form.message}}</h6>
+                    <a href="{% url 'delete_contact' contact_id=form.id %}" class="delete-form text-decoration-none text-danger">Delete</a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

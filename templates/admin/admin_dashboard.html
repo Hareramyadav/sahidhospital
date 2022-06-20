@@ -1,0 +1,95 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Raki International Pvt. Ltd</title>
+    <link rel="icon" href="../../static/images/raki-logo_X0YUzMO.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+        integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="{% static 'js/jQuery3.6.0.js' %}"></script>
+
+    <link rel="stylesheet" href="../static/css/bootstrap.min.css">
+
+    <link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
+    <link rel="stylesheet" href="{% static 'css/main.css' %}">
+</head>
+
+<body>
+    <div class="container-fluid d-flex">
+        <div class="sidebar col-xxl-3 col-xl-3 col-lg-3 col-md-3">
+            <div class="sidebar-collapse my-3 mx-5 pb-3">
+                <h4 class="text-center">Raki Dashboard</h4>
+                <hr>
+                <div class="sidebar-list">
+                    <ul>
+                        <a href="{% url 'contact_forms' %}">
+                            <li class=""><i class="fa-solid fa-gauge me-2"></i>Dashboard</li>
+                        </a>
+                        <a href="{% url 'site_identity' %}">
+                            <li><i class="fa-solid fa-sitemap me-2"></i>Site Identity</li>
+                        </a>
+                        <a href="{% url 'create_menu' %}">
+                            <li class=""><i class="fa-solid fa-bars me-2"></i>Menu</li>
+                        </a>
+                        <a href="{% url 'create_sub_menu' %}">
+                            <li class=""><i class="fa-solid fa-bars me-2"></i>SubMenu</li>
+                        </a>
+                        <a href="{% url 'create_banner' %}">
+                            <li class=""><i class="fa-solid fa-sliders me-2"></i>Banner</li>
+                        </a>
+                        <a href="{% url 'create_about' %}">
+                            <li class=""><i class="fa-solid fa-address-card me-2"></i>About</li>
+                        </a>
+                        <a href="{% url 'create_service' %}">
+                            <li class=""><i class="fa-brands fa-wpforms me-2"></i>Services</li>
+                        </a>
+                        <a href="{% url 'create_news' %}">
+                            <li class=""><i class="fa-solid fa-newspaper me-2"></i>News</li>
+                        </a>
+                        <a href="{% url 'create_testimonial' %}">
+                            <li class=""><i class="fa-solid fa-message me-2"></i>Testimonial</li>
+                        </a> 
+                        <a href="{% url 'create_team' %}">
+                            <li class=""><i class="fa-solid fa-message me-2"></i>Team Message</li>
+                        </a>
+                        <a href="{% url 'create_counter' %}">
+                            <li class=""><i class="fa-solid fa-file-contract me-2"></i>Statistics</li>
+                        </a>
+                        <a href="{% url 'create_footer' %}">
+                            <li class=""><i class="fa-solid fa-file-contract me-2"></i>Footer</li>
+                        </a>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="content col-xxl-9 col-xl-9 col-lg-9 col-md-9">
+            <div class="content-collapse me-5">
+                <nav class="navbar">
+                    <ul class="list-unstyled">
+                        {% if request.session.islogin %}
+                        <li><a href="{% url 'logout' %}"><i class="fas fa-user pe-2"></i>Logout</a></li>
+                        {% else %}
+                        <li><a href="{% url 'admin_login' %}"><i class="fas fa-user pe-2"></i>Sign In</a></li>
+                        {% endif %}
+                    </ul>
+                </nav>
+                <div>
+                    {% block content %} {% endblock %}
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="{% static 'js/bootstrap.min.js'%}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/js/all.min.js"
+        integrity="sha512-6PM0qYu5KExuNcKt5bURAoT6KCThUmHRewN3zUFNaoI6Di7XJPTMoT6K0nsagZKk2OB4L7E3q1uQKHNHd4stIQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="{% static 'js/other.js' %}"></script>
+</body>
+
+</html>
