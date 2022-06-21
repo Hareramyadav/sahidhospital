@@ -1,17 +1,10 @@
 // <!-- Initialize Swiper -->
-var swiper = new Swiper(".mySwiper", {
-  spaceBetween: null,
-  centeredSlides: true,
-
-  speed: 1600,
+var swiper = new Swiper(".Swiper-slide", {
+  spaceBetween: 30,
+  loop: true,
   autoplay: {
-    delay: 4000,
-
+     delay: 2500,
     disableOnInteraction: false,
-  },
-  pagination: {
-    el: ".swiper-pagination",
-    clickable: true,
   },
   navigation: {
     nextEl: ".swiper-button-next",

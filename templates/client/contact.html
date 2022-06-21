@@ -3,32 +3,32 @@
 
 {% block content %}
 <div class="page-top-bar"></div>
-<div class="contactus-page mt-5">
+<div class="contactus-page my-5">
     <h3 class="container fs-2 fw-bold mb-5">Contact Us</h3>
     <div class="contact-contents container d-md-flex justify-content-between">
         <div class="">
-            {% for ff in footer_first %}
+            {% for footer in footer %}
             <div class="contact-details">
-                <h4>Nasa International College</h4>
-                <h6><i class="fas fa-map-marker me-3"></i> {{ff.address}}</h6>
+                <h4>Sahid Memorial Hospital</h4>
+                <h6><i class="fas fa-map-marker me-3"></i> {{footer.address}}</h6>
                 <h6><i class="fas fa-phone me-3"></i><a class="text-decoration-none text-dark"
-                        href="tel:+977-01-4112043">{{ff.phone_number}}</a></h6>
+                        href="tel:+977-01-4112043">{{footer.phone_number}}</a></h6>
                 <h6><i class="fas fa-envelope me-3"></i><a class="text-decoration-none text-dark"
-                        href="emailto:{{ff.email}}">{{ff.email}}</a></h6>
+                        href="emailto:{{footer.email}}">{{footer.email}}</a></h6>
             </div>
             {% endfor %}
             <div class="contact-map mt-5">
                 <h4>Follow Us</h4>
-                {% for ft in footer_third %}
+                {% for footer in footer %}
                 <ul class="list-unstyled d-flex">
-                    <li><a href="{{ft.facebook}}" target="_blank"><i
+                    <li><a href="{{footer.facebook}}" target="_blank"><i
                                 class="fa-brands fa-facebook me-3 fs-3 text-dark"></i></a></li>
-                    <li><a href="{{ft.instagram}}" target="_blank"><i
+                    <li><a href="{{footer.instagram}}" target="_blank"><i
                                 class="fa-brands fa-instagram me-3 fs-3 text-dark"></i></a></li>
-                    <li><a href="{{ft.youtube}}" target="_blank"><i
+                    <li><a href="{{footer.youtube}}" target="_blank"><i
                                 class="fa-brands fa-youtube me-3 fs-3 text-dark"></i></a></li>
-                    {% if ft.twitter %}
-                    <li><a href="{{ft.twitter}}" target="_blank"><i
+                    {% if footer.twitter %}
+                    <li><a href="{{footer.twitter}}" target="_blank"><i
                                 class="fa-brands fa-twitter me-3 fs-3 text-dark"></i></a></li>
                     {% endif %}
                 </ul>
@@ -37,8 +37,8 @@
         </div>
         <div class="contact-map">
             <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3532.952833462187!2d85.3482762146682!3d27.687852632956222!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39eb198bff44beab%3A0xb2adad06c4dfc729!2sNASA%20Int&#39;l%20College!5e0!3m2!1sen!2snp!4v1652780425122!5m2!1sen!2snp"
-                maxWidth="800" height="350" style="border:0;" allowfullscreen="" loading="lazy"
+                src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d14130.946238375594!2d85.281024!3d27.694536!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x67b10f9eb22bde90!2sSahid%20Memorial%20Hospital!5e0!3m2!1sen!2snp!4v1655797065398!5m2!1sen!2snp"
+                width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
                 referrerpolicy="no-referrer-when-downgrade"></iframe>
         </div>
     </div>
