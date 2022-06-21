@@ -13,6 +13,12 @@
     <link href="https://fonts.googleapis.com/css?family=Poppins:300,300i,400,400i,500,500i,600,600i,700,700i,800"
         rel="stylesheet">
     <link href="../static/css/style.min.css" type="text/css" rel="stylesheet" />
+
+    <!--Swiper-->
+    <link rel="stylesheet" href="../static/css/bootstrap.min.css">
+    <link href="../static/css/main.css" type="text/css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css" />
+    <script src="../static/js/vendor/jquery.min.js"></script>
 </head>
 
 <body>
@@ -20,34 +26,24 @@
     <header class="transparent_header">
         <div class="business_bliss_main_header ">
             <div class="container">
-                <div class="row">
-                    <div class="col-lg-4 col-md-12 col-sm-7 logo">
-                        <div class=" site-branding">
-                            <!--<a href="#" class="custom-logo-link"><img width="290" height="50" src="assets/images/logo.png" class="custom-logo" alt="Hitstoreqq" ></a>-->
-                            <h1 class="site-title">
-                                <a href="/" rel="home">Sahid Memorial Hospital</a>
-                            </h1>
-                            <!-- <p class="site-description">Just another WordPress site</p>-->
+                <nav class="navbar navbar-expand-lg navbar-light">
+                    <div class="container-fluid">
+                        {% for identity in site_identity %}
+                        <div>
+                            <!-- <a class="navbar-brand" href="/"><img src="/{{identity.logo_first}}" alt=""></a> -->
+                            <a href="/" class="text-white fw-bold text-decoration-none fs-2">{{identity.site_name}}</a>
+                        </div>
+                        {% endfor %}
+
+                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#header"
+                            aria-controls="header" aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                        <div class="collapse navbar-collapse bottom-header" id="header">
+                            <a class="nav-link text-capitalize bottom-nav-link text-dark" href="/">Home</a>
                         </div>
                     </div>
-                    <div class="col-lg-8 col-md-12 col-sm-12">
-                        <nav id="site-navigation" class="main-navigation">
-                            <button class="main-menu-toggle" aria-controls="primary-menu" aria-expanded="false"><i
-                                    class="fa fa-bars"></i></button>
-
-                            <div class="main-menu-container-collapse">
-                                <ul id="primary-menu" class="menu nav-menu right" aria-expanded="false">
-                                    <li> <a href="index.php">Home</a> </li>
-                                    <li><a href="#">About Us</a> </li>
-                                    <li><a href="#">Services</a> </li>
-                                    <li><a href="#">Doctors</a> </li>
-                                    <li><a href="#">News & Event</a> </li>
-                                    <li> <a href="#">Contact Us</a></li>
-                                </ul>
-                            </div>
-                        </nav>
-                    </div>
-                </div>
+                </nav>
             </div>
         </div>
     </header>
@@ -143,12 +139,16 @@
     </footer>
 
 
+    <script src="../static/js/other.js"></script>
+    <script src="{% static 'js/bootstrap.min.js'%}"></script>
     <script src="../static/js/vendor/jquery.min.js"></script>
     <script src="../static/js/vendor/bootstrap.js"></script>
     <script src="../static/js/vendor/owl.carousel.js"></script>
     <script src="http://cdnjs.cloudflare.com/ajax/libs/waypoints/2.0.3/waypoints.min.js"></script>
     <script src="../static/js/vendor/jquery.counterup.js"></script>
     <script src="../static/js/custom.js"></script>
+    <script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script>
+    <script src="../static/js/main.js"></script>
 </body>
 
 </html>

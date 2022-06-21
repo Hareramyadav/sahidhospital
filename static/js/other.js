@@ -1,7 +1,7 @@
 let i = 2;
 $(document).ready(function () {
-    // const url = 'http://127.0.0.1:8000/';
-    const url = 'http://fortune.radiatnserversite.com/';
+    const url = 'http://127.0.0.1:8000/';
+    // const url = 'http://fortune.radiatnserversite.com/';
     imageDiv = $('#images').show();
     videoDiv = $('#videos').hide();
     $('#image_button').click(function () {
@@ -101,13 +101,13 @@ $(document).ready(function () {
                 } else {
                     if (a.menu_link === '' || a.menu_link === null) {
                         $('.bottom-header').append(
-                            `<a class="nav-link text-capitalize bottom-nav-link text-dark" href="${url}fortune/${a.id}">`
+                            `<a class="nav-link text-capitalize bottom-nav-link" href="${url}fortune/${a.id}">`
                             + a.menu_name +
                             '</a>'
                         )
                     } else {
                         $('.bottom-header').append(
-                            `<a class="nav-link text-capitalize bottom-nav-link text-dark" href="${url}${a.menu_link}">`
+                            `<a class="nav-link text-capitalize bottom-nav-link" href="${url}${a.menu_link}">`
                             + a.menu_name +
                             '</a>'
                         )
@@ -130,8 +130,6 @@ $(document).ready(function () {
             linkContent.hide();
         }
     })
-
-
 
     // news based on selected value
     var newsIdentity = $('.news-identity').hide();
@@ -170,25 +168,6 @@ $(document).ready(function () {
             top: y + 'px'
         });
         angle += step;
-    });
-
-    // counter part...............
-    function count($this) {
-        var current = parseInt($this.html(), 10);
-        current = current + 1; /* Where 1 is increment */
-
-        $this.html(++current);
-        if (current > $this.data('count')) {
-            $this.html($this.data('count'));
-        } else {
-            setTimeout(function () { count($this) }, 10);
-        }
-    }
-
-    jQuery(".counter").each(function () {
-        jQuery(this).data('count', parseInt(jQuery(this).html(), 10));
-        jQuery(this).html('0');
-        count(jQuery(this));
     });
 
     // Fixed header on scroll

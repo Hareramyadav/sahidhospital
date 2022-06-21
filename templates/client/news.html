@@ -2,9 +2,10 @@
 {% load static %}
  
 {% block content %}
-<div class="container-fluid blogs-page">
+<div class="page-top-bar"></div>
+<div class="container-fluid blogs-page mt-5 d-flex flex-column">
     {% for n in news %}
-    <div class="card px-2 py-2 flex-md-row mb-4 mb-lg-0">
+    <div class="card px-4 py-4 mb-4 mb-lg-0">
         <div class="card-text mb-3 mb-lg-0">
             <h3>{{n.title}}</h3>
             <p>{{n.created_at}}</p>
@@ -12,7 +13,7 @@
         </div>
         {% if n.news_image %}
         <div class="card-image">
-            <img src="{{n.news_image.url}}" alt="" srcset="" height="200" width="250">
+            <img src="{{n.news_image.url}}" alt="" srcset="">
         </div>
         {% endif %}
     </div>
